@@ -1,61 +1,83 @@
 .App {
-  /*padding: 30px;*/
-  padding-top: 30px;
-  padding-left: 30px;
-  display: flex;
-  background-image: url("mountains-1412683_1280.png");
-  width: 1280px;
-  height: 640px;
+    display: flex;
+    background-image: url("mountains-1412683_1280.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: available;
+    height: 600px;
 }
 
 .App > div {
-  margin-right: 50px;
+    margin-right: 50px;
 }
 
 .todolist {
-  width: max-content;
-  height: min-content;
-  border: 2px solid cornflowerblue;
-  border-radius: 5px;
-  padding: 20px;
-  opacity: 0.7;
+    width: max-content;
+    height: min-content;
+    border: 2px solid cornflowerblue;
+    border-radius: 5px;
+    padding: 20px;
+    margin-outside: 20px;
+    opacity: 0.7;
+}
+
+.todolist:active {
+    opacity: 1.0;
 }
 
 .todolist:hover {
-  opacity: 1.0;
+    opacity: 1.0;
 }
 
 .todolist-empty {
-  width: max-content;
-  height: min-content;
-  border: 2px solid crimson;
-  border-radius: 5px;
-  padding: 20px;
+    width: max-content;
+    height: min-content;
+    border: 2px solid crimson;
+    border-radius: 5px;
+    padding: 20px;
+    opacity: 0.7;
+}
 
-  opacity: 0.7;
+.todolist-empty:active {
+    opacity: 1.0;
 }
 
 .todolist-empty:hover {
-  opacity: 1.0;
+    opacity: 1.0;
 }
 
 .task {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .task-done {
-  font-weight: normal;
-  text-decoration: line-through;
+    font-weight: normal;
+    text-decoration: line-through;
 }
 
 .btn-active {
-  background-color: cornflowerblue;
-  color: white;
-  border: 2px solid cornflowerblue;
-  border-radius: 5px;
+    background-color: cornflowerblue;
+    color: white;
+    border: 2px solid cornflowerblue;
+    border-radius: 5px;
+    margin-right: 5px;
 }
 
 .input-error {
-  outline: none;
-  border: 2px solid red;
+    outline: none;
+    border: 2px solid red;
+}
+
+.btn-inactive {
+    color: cornflowerblue;
+    border: 2px solid cornflowerblue;
+    border-radius: 5px;
+    margin-right: 5px;
+    background-color: transparent;
+}
+
+.btn-cross {
+    border-radius: 5px;
+    border: 1px solid lightslategrey;
+    background-color: transparent;
 }

@@ -91,20 +91,22 @@ function App(): JSX.Element {
         let tasksForRender: Array<TaskType> = getFilteredTasksForRender(tasks[tl.id], tl.filter)
 
         return (
-                    <ToDoList
-                        key={tl.id}
+            <div style={ {paddingTop: 20, paddingLeft: 20} }>
+                <ToDoList
+                    key={tl.id}
 
-                        todoListId={tl.id}
-                        title={tl.title}
-                        filter={tl.filter}
-                        tasks={tasksForRender}
+                    todoListId={tl.id}
+                    title={tl.title}
+                    filter={tl.filter}
+                    tasks={tasksForRender}
 
-                        addTask={addTask}
-                        taskRemover={taskRemover}
-                        changeToDoListFilter={changeToDoListFilter}
-                        changeTaskStatus={changeTaskStatus}
-                        removeTodoList={removeTodoList}
-                    />
+                    addTask={addTask}
+                    taskRemover={taskRemover}
+                    changeToDoListFilter={changeToDoListFilter}
+                    changeTaskStatus={changeTaskStatus}
+                    removeTodoList={removeTodoList}
+                />
+            </div>
         )
     })
 
@@ -112,9 +114,11 @@ function App(): JSX.Element {
         <div className="App">
 
             {todoListComponents}
+            <div style={ {paddingTop: 20, paddingLeft: 20} }>
             <TodoListAdder
                 addTodoList={addTodoList}
             />
+            </div>
         </div>
     );
 }

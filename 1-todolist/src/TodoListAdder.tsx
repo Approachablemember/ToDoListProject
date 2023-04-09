@@ -24,7 +24,7 @@ const TodoListAdder = (props: todoListPropsType) => {
     return (
         <div>
             <input
-                placeholder={'Enter Todo List name here'}
+                placeholder={'Enter Todo list title here'}
                 value={title}
                 onChange={setLocalTitleHandler}
                 onKeyDown={onEnter}

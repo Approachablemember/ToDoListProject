@@ -44,8 +44,8 @@ const ToDoList: FC<ToDoListPropsType> = (props) => {
                     onChange={changeTaskStatusHandler}
                     type="checkbox"
                 />
-                <span className={task.isDone ? 'task-done' : 'task'}>{task.title}</span>
-                <button onClick={removeTaskHandler}>x
+                <span className={task.isDone ? 'task-done' : 'task'}>{task.title + ' '}</span>
+                <button className={'btn-cross'} onClick={removeTaskHandler}>x
                 </button>
             </li>
         )
@@ -84,12 +84,12 @@ const ToDoList: FC<ToDoListPropsType> = (props) => {
         <div className={todoClasses}>
             <div>
                 <h3>{props.title + " "}
-                <button onClick={todoListRemoverHandler}>X</button>
+                <button className={'btn-cross'} onClick={todoListRemoverHandler}>x</button>
                 </h3>
 
                 <div>
                     <input
-                        placeholder={"Enter task title please"}
+                        placeholder={"Enter task title here"}
                         value={title}
                         onChange={setLocalTitleHandler}
                         onKeyDown={onKeyDownAddTaskHandler}
@@ -109,21 +109,21 @@ const ToDoList: FC<ToDoListPropsType> = (props) => {
                 </ul>
                 <div>
                     <button
-                        className={props.filter === 'all' ? 'btn-active' : ''}
+                        className={props.filter === 'all' ? 'btn-active' : 'btn-inactive'}
                         onClick={() => {
                             props.changeToDoListFilter("all", props.todoListId)
                         }}
                     >All
                     </button>
                     <button
-                        className={props.filter === 'active' ? 'btn-active' : ''}
+                        className={props.filter === 'active' ? 'btn-active' : 'btn-inactive'}
                         onClick={() => {
                             props.changeToDoListFilter("active", props.todoListId)
                         }}
                     >Active
                     </button>
                     <button
-                        className={props.filter === 'completed' ? 'btn-active' : ''}
+                        className={props.filter === 'completed' ? 'btn-active' : 'btn-inactive'}
                         onClick={() => {
                             props.changeToDoListFilter("completed", props.todoListId)
                         }}
