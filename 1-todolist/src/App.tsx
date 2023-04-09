@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import ToDoList, {TaskType} from "./ToDoList";
 import {v1} from "uuid";
+import TodoListAdder from "./TodoListAdder";
 
 
 export type FilterValueType = "all" | "active" | "completed"
@@ -20,6 +21,7 @@ function App(): JSX.Element {
     const todoListId_1 = v1()
     const todoListId_2 = v1()
 
+    // standard todolists
     const [todoLists, setTodoLists] = useState<TodoListType[]>([
         {id: todoListId_1, title: "What to learn", filter: "all"},
         {id: todoListId_2, title: "What to buy", filter: "all"}
@@ -45,7 +47,7 @@ function App(): JSX.Element {
         setTasks({...tasks, [todoListId]: tasks[todoListId].filter((task) => task.id !== taskId)})
     }
     const addTask = (title: string, todoListId: string) => {
-        const newTask: TaskType = {id: v1(), title: title, isDone: false}
+        const newTask: TaskType = {id: v1(), title, isDone: false}
         setTasks({...tasks, [todoListId]: [newTask, ...tasks[todoListId]]})
     }
     const changeTaskStatus = (taskId: string, newIsDone: boolean, todoListId: string) => {
@@ -75,30 +77,44 @@ function App(): JSX.Element {
         }
     }
 
+    const addTodoList = (title: string) => {
+        const newTodoListId = v1()
+        const newTodoList: TodoListType = {id: newTodoListId, title, filter: 'all'}
+
+        setTodoLists([...todoLists, newTodoList])
+
+        setTasks({...tasks, [newTodoListId]: []})
+    }
+
+
     const todoListComponents = todoLists.map(tl => {
         let tasksForRender: Array<TaskType> = getFilteredTasksForRender(tasks[tl.id], tl.filter)
 
         return (
-            <ToDoList
-                key={tl.id}
+                    <ToDoList
+                        key={tl.id}
 
-                todoListId={tl.id}
-                title={tl.title}
-                filter={tl.filter}
-                tasks={tasksForRender}
+                        todoListId={tl.id}
+                        title={tl.title}
+                        filter={tl.filter}
+                        tasks={tasksForRender}
 
-                addTask={addTask}
-                taskRemover={taskRemover}
-                changeToDoListFilter={changeToDoListFilter}
-                changeTaskStatus={changeTaskStatus}
-                removeTodoList={removeTodoList}
-            />
+                        addTask={addTask}
+                        taskRemover={taskRemover}
+                        changeToDoListFilter={changeToDoListFilter}
+                        changeTaskStatus={changeTaskStatus}
+                        removeTodoList={removeTodoList}
+                    />
         )
     })
 
     return (
         <div className="App">
+
             {todoListComponents}
+            <TodoListAdder
+                addTodoList={addTodoList}
+            />
         </div>
     );
 }

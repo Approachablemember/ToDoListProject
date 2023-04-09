@@ -1,6 +1,11 @@
 .App {
-  padding: 30px;
+  /*padding: 30px;*/
+  padding-top: 30px;
+  padding-left: 30px;
   display: flex;
+  background-image: url("mountains-1412683_1280.png");
+  width: 1280px;
+  height: 640px;
 }
 
 .App > div {
@@ -9,18 +14,29 @@
 
 .todolist {
   width: max-content;
-  border: 2px solid lightslategrey;
+  height: min-content;
+  border: 2px solid cornflowerblue;
   border-radius: 5px;
   padding: 20px;
-  background-color: darkseagreen;
+  opacity: 0.7;
+}
+
+.todolist:hover {
+  opacity: 1.0;
 }
 
 .todolist-empty {
   width: max-content;
-  border: 2px solid lightslategrey;
+  height: min-content;
+  border: 2px solid crimson;
   border-radius: 5px;
   padding: 20px;
-  background-color: darksalmon;
+
+  opacity: 0.7;
+}
+
+.todolist-empty:hover {
+  opacity: 1.0;
 }
 
 .task {
