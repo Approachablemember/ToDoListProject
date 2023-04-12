@@ -6,6 +6,7 @@ import TodoListAdder from "./TodoListAdder";
 
 
 export type FilterValueType = "all" | "active" | "completed"
+
 export type TodoListType = {
     id: string,
     title: string,
@@ -16,12 +17,11 @@ type TaskStateType = {
     [todoListId: string]: TaskType[]
 }
 
-
 function App(): JSX.Element {
     const todoListId_1 = v1()
     const todoListId_2 = v1()
 
-    // standard todolists
+    // Examples of todolist
     const [todoLists, setTodoLists] = useState<TodoListType[]>([
         {id: todoListId_1, title: "What to learn", filter: "all"},
         {id: todoListId_2, title: "What to buy", filter: "all"}
@@ -57,7 +57,6 @@ function App(): JSX.Element {
     const changeToDoListFilter = (filter: FilterValueType, todoListId: string) => {
         setTodoLists(todoLists.map(tl => tl.id === todoListId ? {...tl, filter: filter} : tl))
     }
-
     const removeTodoList = (todoListsId: string) => {
         setTodoLists(todoLists.filter(tl => tl.id !== todoListsId))
         delete tasks[todoListsId]
@@ -86,7 +85,6 @@ function App(): JSX.Element {
         setTasks({...tasks, [newTodoListId]: []})
     }
 
-
     const todoListComponents = todoLists.map(tl => {
         let tasksForRender: Array<TaskType> = getFilteredTasksForRender(tasks[tl.id], tl.filter)
 
@@ -112,7 +110,6 @@ function App(): JSX.Element {
 
     return (
         <div className="App">
-
             {todoListComponents}
             <div style={ {paddingTop: 20, paddingLeft: 20} }>
             <TodoListAdder

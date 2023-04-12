@@ -81,3 +81,12 @@
     border: 1px solid lightslategrey;
     background-color: transparent;
 }
+
+.btn-cross:hover {
+    border: 1px solid black;
+}
+
+.input {
+    /*background-color: transparent;*/
+    /*border: 2px solid lightslategrey;*/
+}

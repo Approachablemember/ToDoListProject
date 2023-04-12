@@ -23,8 +23,9 @@ type  ToDoListPropsType = {
 const ToDoList: FC<ToDoListPropsType> = (props) => {
 
     const [title, setTitle] = useState<string>("")
-    //const addTaskInputRef = useRef<any>(null)
     const [error, setError] = useState<boolean>(false)
+
+    // Classes changing logic
     let isAllTasksNotIsDone = true
     for (let i = 0; i < props.tasks.length; i++) {
         if (props.tasks[i].isDone) {
@@ -32,9 +33,9 @@ const ToDoList: FC<ToDoListPropsType> = (props) => {
             break;
         }
     }
-
     const todoClasses = isAllTasksNotIsDone ? "todolist-empty" : "todolist"
 
+    // Tasks mapping into new form
     const toDoListItems: Array<JSX.Element> = props.tasks.map((task: TaskType) => {
         const removeTaskHandler = () => props.taskRemover(task.id, props.todoListId)
         const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(task.id, e.currentTarget.checked, props.todoListId)
@@ -50,12 +51,12 @@ const ToDoList: FC<ToDoListPropsType> = (props) => {
             </li>
         )
     })
+    // Title input validating const's
     const maxTitleLength = 20
     const recommendedTitleLength = 10
-
     const isAddTaskNotPossible = !title.length || title.length >= maxTitleLength
 
-
+    // Handlers/callbacks
     const addTaskHandler = () => {
         const trimmedTitle = title.trim()
         if (trimmedTitle) {
@@ -79,12 +80,11 @@ const ToDoList: FC<ToDoListPropsType> = (props) => {
     const longTitleErrorMessage = (<div style={{color: "red"}}>Title too long</div>)
     const errorMessage = error && (<div style={{color: 'red'}}>Please write proper task title</div>)
 
-
     return (
         <div className={todoClasses}>
             <div>
                 <h3>{props.title + " "}
-                <button className={'btn-cross'} onClick={todoListRemoverHandler}>x</button>
+                    <button className={'btn-cross'} onClick={todoListRemoverHandler}>x</button>
                 </h3>
 
                 <div>
@@ -93,7 +93,7 @@ const ToDoList: FC<ToDoListPropsType> = (props) => {
                         value={title}
                         onChange={setLocalTitleHandler}
                         onKeyDown={onKeyDownAddTaskHandler}
-                        className={error ? 'input-error' : ''}
+                        className={error ? 'input-error' : 'input'}
                     />
                     <button
                         disabled={isAddTaskNotPossible}
