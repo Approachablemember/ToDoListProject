@@ -1,4 +1,6 @@
 import React, {ChangeEvent, FC, KeyboardEvent, useState} from 'react';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import {IconButton, TextField} from "@mui/material";
 
 type AddItemPropsType = {
     addNewItem: (title: string) => void
@@ -34,24 +36,27 @@ const AddItemForm: FC <AddItemPropsType>  = ({ addNewItem }) => {
 
     const longTitleWarningMessage = (<div style={{color: "white"}}>Title should be shorter</div>)
     const longTitleErrorMessage = (<div style={{color: "red"}}>Title too long</div>)
-    const errorMessage = error && (<div style={{color: 'red'}}>Please write proper task title</div>)
+    const errorMessage = error && (<div style={{color: 'red'}}>Please write proper title</div>)
 
 
 
     return (
         <div>
-            <input
+            <TextField
+                variant={"outlined"}
+                size={"small"}
                 placeholder={"Enter title here"}
                 value={title}
                 onChange={setLocalTitleHandler}
                 onKeyDown={onEnter}
                 className={error ? 'input-error' : 'input'}
             />
-            <button
+
+            <IconButton
                 disabled={isAddTaskNotPossible}
-                onClick={addTaskItem}
-            >+
-            </button>
+                onClick={addTaskItem}>
+                <AddCircleOutlineIcon/>
+            </IconButton>
             {errorMessage}
             {title.length > recommendedTitleLength && title.length <= maxTitleLength && longTitleWarningMessage}
             {title.length > maxTitleLength && longTitleErrorMessage}

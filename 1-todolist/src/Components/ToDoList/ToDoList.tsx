@@ -3,6 +3,8 @@ import {FilterValueType} from '../../App';
 import AddItemForm from "../AddItemForm/AddItemForm";
 import TasksItems from "../TasksItems/TasksItems";
 import EditableSpan from "../EditableSpan/EditableSpan";
+import {Button, IconButton, Typography} from "@mui/material";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 export type TaskType = {
     id: string
@@ -49,9 +51,14 @@ const ToDoList: FC<ToDoListPropsType> = (props) => {
     return (
         <div className={todoClasses}>
             <div>
-                <h3><EditableSpan title={props.title} changeTitle={newTodoListTitle} />
-                    <button className={'btn-cross'} onClick={todoListRemoverHandler}>x</button>
-                </h3>
+                <Typography variant={"h5"} align={"center"} fontWeight={"bold"}>
+                    <EditableSpan title={props.title} changeTitle={newTodoListTitle} />
+                    <IconButton
+                        size={"small"}
+                        onClick={todoListRemoverHandler}>
+                        <HighlightOffIcon/>
+                    </IconButton>
+                </Typography>
                 <div>
                     <AddItemForm addNewItem={addTaskHandler}/>
                 </div>
@@ -66,28 +73,34 @@ const ToDoList: FC<ToDoListPropsType> = (props) => {
                         changeTaskTitle={props.changeTaskTitle}
                     />
                 </ul>
-                <div>
-                    <button
+                <div className={'btn-filter-container'}>
+                    <Button
+                        size={"small"}
+                        variant={props.filter === 'all' ? "contained" : "outlined"}
                         className={props.filter === 'all' ? 'btn-active' : 'btn-inactive'}
                         onClick={() => {
                             props.changeToDoListFilter("all", props.todoListId)
                         }}
                     >All
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                        size={"small"}
+                        variant={props.filter === 'active' ? "contained" : "outlined"}
                         className={props.filter === 'active' ? 'btn-active' : 'btn-inactive'}
                         onClick={() => {
                             props.changeToDoListFilter("active", props.todoListId)
                         }}
                     >Active
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                        size={"small"}
+                        variant={props.filter === 'completed' ? "contained" : "outlined"}
                         className={props.filter === 'completed' ? 'btn-active' : 'btn-inactive'}
                         onClick={() => {
                             props.changeToDoListFilter("completed", props.todoListId)
                         }}
                     >Completed
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>

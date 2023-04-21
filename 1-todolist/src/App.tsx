@@ -94,7 +94,7 @@ function App(): JSX.Element {
         let tasksForRender: Array<TaskType> = getFilteredTasksForRender(tasks[tl.id], tl.filter)
 
         return (
-            <div style={ {paddingTop: 20, paddingLeft: 20} }>
+            <div>
                 <ToDoList
                     key={tl.id}
 

@@ -1,24 +1,40 @@
 .App {
     display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
     background-image: url("mountains-1412683_1280.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    width: available;
-    height: 600px;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 10px;
+    padding-left: 10px;
 }
 
 .App > div {
     margin-right: 50px;
 }
-
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+}
 .todolist {
-    width: max-content;
+    width: min-content;
     height: min-content;
     border: 2px solid cornflowerblue;
     border-radius: 5px;
-    padding: 20px;
-    margin-outside: 20px;
+    padding: 10px;
     opacity: 0.7;
+    margin: 10px;
 }
 
 .todolist:active {
@@ -26,16 +42,16 @@
 }
 
 .todolist:hover {
-    opacity: 1.0;
-}
+    opacity: 1.0;}
 
 .todolist-empty {
-    width: max-content;
+    width: min-content;
     height: min-content;
     border: 2px solid crimson;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
     opacity: 0.7;
+    margin: 10px;
 }
 
 .todolist-empty:active {
@@ -86,7 +102,11 @@
     border: 1px solid black;
 }
 
+.btn-filter-container {
+    display: flex;
+    gap: 5px;
+}
+
 .input {
-    /*background-color: transparent;*/
-    /*border: 2px solid lightslategrey;*/
+
 }
