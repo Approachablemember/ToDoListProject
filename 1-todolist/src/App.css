@@ -5,7 +5,7 @@
     background-image: url("mountains-1412683_1280.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: contain;
+    background-size: cover;
     position: absolute;
     top: 0;
     bottom: 0;
