@@ -34,9 +34,9 @@ const AddItemForm: FC <AddItemPropsType>  = ({ addNewItem }) => {
     const recommendedTitleLength = 10
     const isAddTaskNotPossible = !title.length || title.length >= maxTitleLength
 
-    const longTitleWarningMessage = (<div style={{color: "white"}}>Title should be shorter</div>)
-    const longTitleErrorMessage = (<div style={{color: "red"}}>Title too long</div>)
-    const errorMessage = error && (<div style={{color: 'red'}}>Please write proper title</div>)
+    const longTitleWarningMessage = (<div style={{color: "red"}}>Title should be shorter</div>)
+    const longTitleErrorMessage = (<div style={{color: "red"}}>Title is too long</div>)
+    const errorMessage = error && 'Please write proper title'
 
 
 
@@ -49,7 +49,8 @@ const AddItemForm: FC <AddItemPropsType>  = ({ addNewItem }) => {
                 value={title}
                 onChange={setLocalTitleHandler}
                 onKeyDown={onEnter}
-                className={error ? 'input-error' : 'input'}
+                error={error}
+                helperText={errorMessage}
             />
 
             <IconButton
@@ -57,7 +58,6 @@ const AddItemForm: FC <AddItemPropsType>  = ({ addNewItem }) => {
                 onClick={addTaskItem}>
                 <AddCircleOutlineIcon/>
             </IconButton>
-            {errorMessage}
             {title.length > recommendedTitleLength && title.length <= maxTitleLength && longTitleWarningMessage}
             {title.length > maxTitleLength && longTitleErrorMessage}
         </div>

@@ -1,23 +1,23 @@
-.App {
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    background-image: url("mountains-1412683_1280.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding-top: 10px;
-    padding-left: 10px;
-}
+/*.App {*/
+/*    display: flex;*/
+/*    flex-flow: row;*/
+/*    flex-wrap: wrap;*/
+/*    background-image: url("mountains-1412683_1280.png");*/
+/*    background-repeat: no-repeat;*/
+/*    background-attachment: fixed;*/
+/*    background-size: cover;*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    padding-top: 10px;*/
+/*    padding-left: 10px;*/
+/*}*/
 
-.App > div {
-    margin-right: 50px;
-}
+/*.App > div {*/
+/*    margin-right: 50px;*/
+/*}*/
 ul {
     display: block;
     list-style-type: disc;
@@ -28,39 +28,37 @@ ul {
     padding-inline-start: 0;
 }
 .todolist {
-    width: min-content;
-    height: min-content;
     border: 2px solid cornflowerblue;
     border-radius: 5px;
     padding: 10px;
-    opacity: 0.7;
-    margin: 10px;
+    /*opacity: 0.7;*/
+    /*margin: 10px;*/
+    /*background-color: cornflowerblue;*/
 }
 
-.todolist:active {
-    opacity: 1.0;
-}
+/*.todolist:active {*/
+/*    opacity: 1.0;*/
+/*}*/
 
-.todolist:hover {
-    opacity: 1.0;}
+/*.todolist:hover {*/
+/*    opacity: 1.0;}*/
 
 .todolist-empty {
-    width: min-content;
-    height: min-content;
     border: 2px solid crimson;
     border-radius: 5px;
     padding: 10px;
-    opacity: 0.7;
-    margin: 10px;
+    /*opacity: 0.7;*/
+    /*margin: 10px;*/
+    /*background-color: cornflowerblue;*/
 }
 
-.todolist-empty:active {
-    opacity: 1.0;
-}
+/*.todolist-empty:active {*/
+/*    opacity: 1.0;*/
+/*}*/
 
-.todolist-empty:hover {
-    opacity: 1.0;
-}
+/*.todolist-empty:hover {*/
+/*    opacity: 1.0;*/
+/*}*/
 
 .task {
     font-weight: bold;

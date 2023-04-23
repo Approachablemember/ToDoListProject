@@ -38,7 +38,7 @@ const EditableSpan: FC<EditableSpanPropsType> = (
 
         editMode
             ? <TextField
-                variant={"filled"}
+                variant={"standard"}
                 size={"small"}
                 value={newTitle}
                 onChange={changeNewTitle}
