@@ -160,7 +160,7 @@ function App(): JSX.Element {
                     </Typography>
                     <FormGroup>
                         <FormControlLabel
-                            control={<Checkbox
+                            control={<Checkbox checked={isDarkMode}
                                 onChange={(e) => setDarkMode(e.currentTarget.checked)}/>}
                             label={isDarkMode
                                 ? 'Dark mode'
