@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import ToDoList, {TaskType} from "./Components/ToDoList/ToDoList";
 import {v1} from "uuid";
@@ -16,7 +16,6 @@ import {
 } from "@mui/material";
 import {Menu} from "@mui/icons-material";
 import {blue, deepPurple} from "@mui/material/colors";
-
 
 export type FilterValueType = "all" | "active" | "completed"
 
@@ -55,6 +54,12 @@ function App(): JSX.Element {
     })
     const [isDarkMode, setDarkMode] = useState<boolean>(true)
 
+    useEffect( () => {
+        const date = new Date()
+        const hours = date.getHours()
+        hours > 8 && hours < 20? setDarkMode(false) : setDarkMode(true)
+    }, [] )
+
     const taskRemover = (taskId: string, todoListId: string) => {
         setTasks({...tasks, [todoListId]: tasks[todoListId].filter((task) => task.id !== taskId)})
     }
@@ -68,16 +73,6 @@ function App(): JSX.Element {
     const changeTaskTitle = (taskId: string, newTitle: string, todoListId: string) => {
         setTasks({...tasks, [todoListId]: tasks[todoListId].map(t => t.id === taskId ? {...t, title: newTitle} : t)})
     }
-
-
-    const changeToDoListFilter = (filter: FilterValueType, todoListId: string) => {
-        setTodoLists(todoLists.map(tl => tl.id === todoListId ? {...tl, filter: filter} : tl))
-    }
-    const removeTodoList = (todoListsId: string) => {
-        setTodoLists(todoLists.filter(tl => tl.id !== todoListsId))
-        delete tasks[todoListsId]
-    }
-
     const getFilteredTasksForRender = (taskList: TaskType[], filterValue: FilterValueType) => {
         switch (filterValue) {
             case "all":
@@ -91,12 +86,18 @@ function App(): JSX.Element {
 
         }
     }
+
+    const changeToDoListFilter = (filter: FilterValueType, todoListId: string) => {
+        setTodoLists(todoLists.map(tl => tl.id === todoListId ? {...tl, filter: filter} : tl))
+    }
+    const removeTodoList = (todoListsId: string) => {
+        setTodoLists(todoLists.filter(tl => tl.id !== todoListsId))
+        delete tasks[todoListsId]
+    }
     const addTodoList = (title: string) => {
         const newTodoListId = v1()
         const newTodoList: TodoListType = {id: newTodoListId, title, filter: 'all'}
-
         setTodoLists([...todoLists, newTodoList])
-
         setTasks({...tasks, [newTodoListId]: []})
     }
     const changeToDoListTitle = (newTitle: string, todoListId: string) => {
@@ -132,7 +133,6 @@ function App(): JSX.Element {
     })
 
     const mode = isDarkMode ? 'dark' : 'light'
-
     const customTheme = createTheme({
         palette: {
             primary: deepPurple,
