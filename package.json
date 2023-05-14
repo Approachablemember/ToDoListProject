@@ -2,5 +2,8 @@
   "dependencies": {
     "@types/uuid": "^9.0.1",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
