@@ -21,9 +21,14 @@ type ChangeTodoListFilterAT = {
     filter: FilterValueType
 }
 
-type ActionType = RemoveTodoListAT | AddTodoListAT | ChangeTodoListTitleAT | ChangeTodoListFilterAT
+export type TodoListActionTypes = RemoveTodoListAT |
+    AddTodoListAT |
+    ChangeTodoListTitleAT |
+    ChangeTodoListFilterAT
 
-export const todolistReducer = (state: TodoListType[], action: ActionType): TodoListType[] => {
+const initialState: TodoListType[] = []
+
+export const todolistReducer = (state = initialState, action: TodoListActionTypes): TodoListType[] => {
 
     switch (action.type) {
         case "REMOVE-TODOLIST":
@@ -40,7 +45,7 @@ export const todolistReducer = (state: TodoListType[], action: ActionType): Todo
         case "CHANGE-TODOLIST-FILTER":
             return state.map(tl => tl.id === action.id ? {...tl, filter: action.filter} : tl)
         default :
-            throw new Error('Incorrect reducer type')
+            return state
     }
 }
 
@@ -50,7 +55,6 @@ export const RemoveTodoListAC = (id: string): RemoveTodoListAT => {
         id
     }
 }
-
 export const AddTodoListAC = (title: string): AddTodoListAT => {
     return {
         type: 'ADD-TODOLIST',
@@ -58,15 +62,13 @@ export const AddTodoListAC = (title: string): AddTodoListAT => {
         todolistId: v1()
     }
 }
-
 export const ChangeTodoListTitleAC = (id: string, title: string): ChangeTodoListTitleAT => {
-  return {
-      type: 'CHANGE-TODOLIST-TITLE',
-      id,
-      title
-  }
+    return {
+        type: 'CHANGE-TODOLIST-TITLE',
+        id,
+        title
+    }
 }
-
 export const ChangeTodoListFilterAC = (id: string, filter: FilterValueType): ChangeTodoListFilterAT => {
     return {
         type: 'CHANGE-TODOLIST-FILTER',

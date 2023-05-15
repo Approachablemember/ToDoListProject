@@ -14,6 +14,8 @@ type TodoListItemsType = {
 
 const TasksItems = (props: TodoListItemsType) => {
 
+
+
     // Tasks mapping into new form
     const toDoListItems: Array<JSX.Element> = props.tasks.map((task: TaskType) => {
         const removeTaskHandler = () => props.taskRemover(task.id, props.todoListId)
@@ -32,7 +34,9 @@ const TasksItems = (props: TodoListItemsType) => {
                         onClick={removeTaskHandler}>
                         <HighlightOffIcon/>
                     </IconButton>
-                }>
+                }
+            >
+
                 <Checkbox
                     key={task.id}
                     checked={task.isDone}
