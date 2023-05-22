@@ -1,46 +1,52 @@
-# Getting Started with Create React App
+# To-Do List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+by Vladyslav Sevastian
 
-## Available Scripts
+This project was written to show my skills as Frontend Developer. 
+Application let you create Todo lists, name or rename it and show tasks by filters.
+Inside Todo lists user can add tasks, name and rename them, set their status (done or not done) with simple checkbox, or just delete them
 
-In the project directory, you can run:
+# Live Demo:
 
-### `npm start`
+https://approachablemember.github.io/todo-list-project/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Used Stack:
+React
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+JavaScript
 
-### `npm test`
+TypeScript
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+HTML
 
-### `npm run build`
+CSS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+MaterialUI
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+React-Redux
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+# Used Technologies:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Project is simply divided by names which connect them to used hooks or libraries
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+useState() hook:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+App.tsx, ToDoList.tsx, TasksItems.tsx, AddItemForm.tsx
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+useReducer() hook:
 
-## Learn More
+AppWithReducers.tsx, ToDoList.tsx, TasksItems.tsx, AddItemForm.tsx, tasks-reducer.ts, todolist-reducer.ts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+React-Redux and useSelector() and useDispatch() hooks:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+AppWithRedux.tsx, ToDoListWithRedux.tsx, TasksItemsWithRedux.tsx, tasks-reducer.ts, todolist-reducer.ts, store.ts
+
+# How to check project's workability?
+
+After this project in your IDE, only thing you need to do is to change component's name in index.tsx file
+
+For example to 'AppWithRedux' and then write in IDE's terminal 'yarn start' and start the application
+
+
+
